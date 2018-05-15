@@ -15,7 +15,7 @@ const app = new Clarifai.App({
 const particlesOptions = {
                 particles: {
                   number: {
-                    value:60,
+                    value:30,
                     density: {
                       enable:true,
                       value_area:800
@@ -48,7 +48,7 @@ class App extends Component {
 }
 
 displayFaceBox = (box) => {
-  this.setstate({box:box})
+  this.setState({box:box})
 }
 
 onInputChange = (event) => {
@@ -76,7 +76,7 @@ onButtonSubmit = () => {
       <Rank />
       <ImageLinkForm onInputChange={this.onInputChange} 
                      onButtonSubmit={this.onButtonSubmit}/>
-      <FaceRecognition imageUrl={this.state.imageUrl}/>
+      <FaceRecognition box= {this.state.box} imageUrl={this.state.imageUrl}/>
       </div>
     );
   }
