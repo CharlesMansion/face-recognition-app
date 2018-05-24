@@ -26,10 +26,7 @@ const particlesOptions = {
                 }
               }
 
-class App extends Component {
-  constructor() {
-    super();
-      this.state = {
+const initialState = {
         input: '',
         imageUrl:'',
         box:{},
@@ -43,7 +40,13 @@ class App extends Component {
            joined : ''
         }
       }
-  }  
+
+class App extends Component {
+  constructor() {
+    super();
+      this.state = initialState;
+      }
+  
 
   loadUser = (data) => {
     this.setState({user : {
@@ -95,6 +98,7 @@ onButtonSubmit = () => {
     .then(count => {
       this.setState(Object.assign(this.state.user, {entries:count}))
       })
+    .catch(console.log)
     }
     this.displayFaceBox(this.calculateFaceLocation(response))
   })
